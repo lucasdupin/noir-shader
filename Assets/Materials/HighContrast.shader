@@ -24,11 +24,8 @@
 		};
 
 		void highContrast (Input IN, SurfaceOutputStandard o, inout fixed4 color) {
-//			fixed3 target = smoothstep(o.Albedo, fixed3(0, 0, 0), color.r+color.g+color.b);
-//			color = fixed4(target, color.a);
 			float val = smoothstep(0.9, 0.91, (color.r+color.g+color.b)/3);
-			color = fixed4(val, val, val, 1);
-			//color *= fixed4(1.0, 0, 0, 1);
+			color = fixed4(o.Albedo * val, 1);
 	    }
 
 		half _Glossiness;
